@@ -10,10 +10,12 @@ public partial class Drone : CharacterBody2D
 
 	private Node2D player;
 	private Vector2 velocity;
+	private AnimatedSprite2D sprite;
 
 	public override void _Ready()
 	{
 		player = GetParent().GetNode<Node2D>("Player");
+		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
 		if (player == null)
 		{
@@ -37,6 +39,11 @@ public partial class Drone : CharacterBody2D
 		else
 		{
 			velocity = Vector2.Zero;
+		}
+
+		if (velocity.X != 0)
+		{
+			sprite.Scale = new Vector2(-Mathf.Sign(velocity.X), sprite.Scale.Y);
 		}
 
 		Velocity = velocity;
