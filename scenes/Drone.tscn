@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bolhrssdvqvo2"]
+[gd_scene load_steps=13 format=3 uid="uid://bolhrssdvqvo2"]
 
 [ext_resource type="Texture2D" uid="uid://bc3ibvi225hjs" path="res://assets/sprites/drone.png" id="1_4jydc"]
+[ext_resource type="Script" path="res://scripts/Drone.cs" id="1_bsvk2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwy1y"]
 atlas = ExtResource("1_4jydc")
@@ -70,6 +71,7 @@ animations = [{
 radius = 8.0
 
 [node name="Drone" type="CharacterBody2D"]
+script = ExtResource("1_bsvk2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bid4w")
