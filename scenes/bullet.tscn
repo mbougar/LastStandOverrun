@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://chsvew34rxm1w"]
+
+[ext_resource type="Script" path="res://scripts/Bullet.cs" id="1_f14ar"]
+[ext_resource type="Texture2D" uid="uid://bdq2tgo3c0dbd" path="res://assets/sprites/bullet.png" id="2_qtuuw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs42d"]
+atlas = ExtResource("2_qtuuw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcy7l"]
+atlas = ExtResource("2_qtuuw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8hjc"]
+atlas = ExtResource("2_qtuuw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0j6qk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs42d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcy7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8hjc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Bullet" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_f14ar")
+speed = 200
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, 0)
+sprite_frames = SubResource("SpriteFrames_0j6qk")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(5, 0)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
