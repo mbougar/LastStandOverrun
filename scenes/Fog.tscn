@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://dipirvplsoecy"]
+
+[sub_resource type="Shader" id="Shader_ci58d"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color;
+uniform int OCTAVES = 4;
+uniform bool enable_pixelation = true;
+uniform int pixelation_amount = 150;
+uniform sampler2D fog_mask;
+uniform vec2 fog_direction = vec2(1.0, 1.0);
+uniform bool scroll_noise_tex = false; 
+uniform vec2 noise_scroll_direction = vec2(1.0, 0.0);
+uniform float fog_opacity : hint_range(0.0, 2.0) = 1.0; // Opacity multiplier
+
+float rand(vec2 coord){
+    return fract(sin(dot(coord, vec2(56, 78)) * 1000.0) * 1000.0);
+}
+
+float noise(vec2 coord){
+    vec2 i = floor(coord);
+    vec2 f = fract(coord);
+
+    float a = rand(i);
+    float b = rand(i + vec2(1.0, 0.0));
+    float c = rand(i + vec2(0.0, 1.0));
+    float d = rand(i + vec2(1.0, 1.0));
+
+    vec2 cubic = f * f * (3.0 - 2.0 * f);
+
+    return mix(a, b, cubic.x) + (c - a) * cubic.y * (1.0 - cubic.x) + (d - b) * cubic.x * cubic.y;
+}
+
+float fbm(vec2 coord){
+    float value = 0.0;
+    float scale = 0.5;
+
+    for(int i = 0; i < OCTAVES; i++){
+        value += noise(coord) * scale;
+        coord *= 2.0;
+        scale *= 0.5;
+    }
+    return value;
+}
+
+void fragment() {
+    vec2 grid_uv = UV;
+    if (enable_pixelation) {
+        grid_uv = round(UV * float(pixelation_amount)) / float(pixelation_amount);
+    }
+    
+    vec2 coord = grid_uv * 20.0;
+
+    if (scroll_noise_tex) {
+        coord += noise_scroll_direction * TIME;
+    }
+
+    vec2 motion = vec2(fbm(coord + fog_direction.x * TIME), fbm(coord + fog_direction.y * TIME));
+
+    float final = fbm(coord + motion);
+    
+    float mask_value = texture(fog_mask, UV).r;
+
+    final *= smoothstep(0.2, 0.8, mask_value);
+
+    COLOR = vec4(color.rgb, clamp(final * color.a * 2.0, 0.0, 1.0));
+}"
+
+[sub_resource type="Gradient" id="Gradient_ehpn6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pwmte"]
+gradient = SubResource("Gradient_ehpn6")
+fill_from = Vector2(0.537634, 0.736559)
+fill_to = Vector2(0.5, 0.973118)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0wcm"]
+shader = SubResource("Shader_ci58d")
+shader_parameter/color = Color(0.000452569, 0.0434629, 0.0114207, 1)
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = true
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(1, 1)
+shader_parameter/scroll_noise_tex = false
+shader_parameter/noise_scroll_direction = Vector2(1, 0)
+shader_parameter/fog_opacity = 1.0
+shader_parameter/fog_mask = SubResource("GradientTexture2D_pwmte")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n6v64"]
+noise_type = 5
+frequency = 0.075
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1wndr"]
+noise = SubResource("FastNoiseLite_n6v64")
+
+[node name="Fog" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = 1000
+material = SubResource("ShaderMaterial_g0wcm")
+position = Vector2(-679, -132)
+color = Color(0.503638, 0.445887, 0.217672, 1)
+texture = SubResource("NoiseTexture2D_1wndr")
+polygon = PackedVector2Array(1136, 436, 960, 437, 796, 440, 662, 497, 651, 546, 632, 622, 622, 709, 624, 798, 850, 804, 1456, 807, 2096, 800, 2087, 724, 2082, 667, 2072, 611, 2076, 477, 1827, 433, 1585, 435, 1320, 425)

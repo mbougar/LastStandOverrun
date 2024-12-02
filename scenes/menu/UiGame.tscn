@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://begykm2oubq3v"]
+
+[ext_resource type="FontFile" uid="uid://c3omxke8loaxv" path="res://assets/fonts/ponderosa.ttf" id="1_o7wjm"]
+
+[node name="UiGame" type="CanvasLayer"]
+
+[node name="Wave" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.481
+anchor_right = 0.519
+anchor_bottom = 0.035
+offset_left = 0.387939
+offset_right = -0.388062
+offset_bottom = 0.32
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_o7wjm")
+text = "Wave"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Kills" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.852
+anchor_right = 1.0
+anchor_bottom = 0.035
+offset_left = -0.504089
+offset_bottom = 0.32
+grow_horizontal = 0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_o7wjm")
+text = "Kills
+"
+horizontal_alignment = 1
+vertical_alignment = 1

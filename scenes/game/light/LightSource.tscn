@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bissrxnnm4pud"]
+
+[ext_resource type="Texture2D" uid="uid://rnd11g3abjjd" path="res://assets/sprites/32x32 textures (1).png" id="1_0na4j"]
+
+[node name="LightSource" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2.25, 2.25)
+color = Color(0.808704, 0.56482, 0.0824087, 1)
+texture = ExtResource("1_0na4j")

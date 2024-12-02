@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://bml7tab4to5cy"]
+
+[ext_resource type="Script" path="res://scripts/ZombieBig.cs" id="1_c6c2p"]
+[ext_resource type="Texture2D" uid="uid://ylqj07r1qexp" path="res://assets/sprites/zombieBig.png" id="1_jhbn2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfuru"]
+atlas = ExtResource("1_jhbn2")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uluun"]
+atlas = ExtResource("1_jhbn2")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m6tb"]
+atlas = ExtResource("1_jhbn2")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncqlg"]
+atlas = ExtResource("1_jhbn2")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhtp7"]
+atlas = ExtResource("1_jhbn2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssesp"]
+atlas = ExtResource("1_jhbn2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve126"]
+atlas = ExtResource("1_jhbn2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1mw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfuru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uluun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m6tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncqlg")
+}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhtp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssesp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve126")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mouwd"]
+size = Vector2(8, 11)
+
+[node name="ZombieBig" type="CharacterBody2D"]
+y_sort_enabled = true
+scale = Vector2(2, 2)
+script = ExtResource("1_c6c2p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g1mw4")
+animation = &"death"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_mouwd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

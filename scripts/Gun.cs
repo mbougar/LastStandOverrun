@@ -20,7 +20,7 @@ public partial class Gun : Node2D
 	{
 		player = GetParent<Node2D>();
 		_muzzle = GetNode<Marker2D>(MuzzlePath);
-		bulletScene = (PackedScene)ResourceLoader.Load("res://scenes/bullet.tscn");
+		bulletScene = (PackedScene)ResourceLoader.Load("res://scenes/Bullet.tscn");
 		_fireCooldownTimer = new Timer();
 		_fireCooldownTimer.OneShot = true;
 		_fireCooldownTimer.WaitTime = FireRate;

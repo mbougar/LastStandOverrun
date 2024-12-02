@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://clxi77hljtrvx"]
+
+[ext_resource type="Texture2D" uid="uid://el5441uuxng7" path="res://assets/sprites/zombie.png" id="1_meifo"]
+[ext_resource type="Script" path="res://scripts/Zombie.cs" id="1_ykflb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0x3g"]
+atlas = ExtResource("1_meifo")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocwm1"]
+atlas = ExtResource("1_meifo")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4ju2"]
+atlas = ExtResource("1_meifo")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0jua"]
+atlas = ExtResource("1_meifo")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5btp0"]
+atlas = ExtResource("1_meifo")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxtm4"]
+atlas = ExtResource("1_meifo")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnxs7"]
+atlas = ExtResource("1_meifo")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1mw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0x3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocwm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4ju2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0jua")
+}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5btp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxtm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnxs7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mouwd"]
+size = Vector2(8, 11)
+
+[node name="Zombie" type="CharacterBody2D"]
+y_sort_enabled = true
+scale = Vector2(2, 2)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 0.1
+script = ExtResource("1_ykflb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g1mw4")
+animation = &"death"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_mouwd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimationFinished"]
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

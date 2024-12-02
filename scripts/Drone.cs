@@ -23,10 +23,8 @@ public partial class Drone : CharacterBody2D
 		}
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public override void _Process(double delta)
 	{
-		base._PhysicsProcess(delta);
-
 		if (player == null) return;
 
 		Vector2 directionToPlayer = (player.GlobalPosition - GlobalPosition).Normalized();
@@ -43,7 +41,7 @@ public partial class Drone : CharacterBody2D
 
 		if (velocity.X != 0)
 		{
-			sprite.Scale = new Vector2(-Mathf.Sign(velocity.X), sprite.Scale.Y);
+			sprite.Scale = new Vector2(Mathf.Sign(velocity.X), sprite.Scale.Y);
 		}
 
 		Velocity = velocity;

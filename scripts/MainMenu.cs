@@ -16,6 +16,6 @@ public partial class MainMenu : Control
 	public void OnPlayButtonPressed()
 	{
 		var global = GetNode<Global>("/root/Global");
-		global.GotoScene("res://scenes/game/levels/base_camp.tscn");
+		global.GotoScene("res://scenes/game/levels/BaseCamp.tscn");
 	}
 }
