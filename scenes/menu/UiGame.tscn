@@ -1,35 +1,72 @@
-[gd_scene load_steps=2 format=3 uid="uid://begykm2oubq3v"]
+[gd_scene load_steps=8 format=3 uid="uid://begykm2oubq3v"]
 
+[ext_resource type="Script" path="res://scripts/UiGame.cs" id="1_jwqnf"]
 [ext_resource type="FontFile" uid="uid://c3omxke8loaxv" path="res://assets/fonts/ponderosa.ttf" id="1_o7wjm"]
+[ext_resource type="Texture2D" uid="uid://cdr3fnk0jo51g" path="res://assets/sprites/HP.png" id="3_p6wvf"]
+[ext_resource type="Texture2D" uid="uid://j1ht2dxkf412" path="res://assets/sprites/HpBack.png" id="3_qwosy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haqw2"]
+atlas = ExtResource("3_qwosy")
+region = Rect2(0, 40, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw4so"]
+atlas = ExtResource("3_p6wvf")
+region = Rect2(1, 16, 58, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyfc4"]
+atlas = ExtResource("3_p6wvf")
+region = Rect2(1, 41, 62, 14)
 
 [node name="UiGame" type="CanvasLayer"]
+script = ExtResource("1_jwqnf")
 
 [node name="Wave" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.481
-anchor_right = 0.519
-anchor_bottom = 0.035
-offset_left = 0.387939
-offset_right = -0.388062
-offset_bottom = 0.32
+anchor_left = 0.471
+anchor_top = 0.014
+anchor_right = 0.529
+anchor_bottom = 0.049
+offset_left = 0.407959
+offset_top = -0.0720005
+offset_right = -0.408081
+offset_bottom = 0.247999
 grow_horizontal = 2
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("1_o7wjm")
+theme_override_font_sizes/font_size = 20
 text = "Wave"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Kills" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.852
-anchor_right = 1.0
-anchor_bottom = 0.035
-offset_left = -0.504089
-offset_bottom = 0.32
+anchor_left = 0.816
+anchor_top = 0.009
+anchor_right = 0.997
+anchor_bottom = 0.085
+offset_left = -0.0320435
+offset_top = 0.168
+offset_right = 0.455933
+offset_bottom = -0.0800018
 grow_horizontal = 0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("1_o7wjm")
+theme_override_font_sizes/font_size = 20
 text = "Kills
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Hp" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+anchor_right = 0.111
+anchor_bottom = 0.049
+offset_right = -63.872
+offset_bottom = -15.752
+scale = Vector2(3, 3)
+pivot_offset = Vector2(-5, -5)
+value = 100.0
+rounded = true
+texture_under = SubResource("AtlasTexture_haqw2")
+texture_over = SubResource("AtlasTexture_jw4so")
+texture_progress = SubResource("AtlasTexture_xyfc4")

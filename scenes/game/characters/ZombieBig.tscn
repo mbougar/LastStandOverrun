@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bml7tab4to5cy"]
+[gd_scene load_steps=13 format=3 uid="uid://bml7tab4to5cy"]
 
 [ext_resource type="Script" path="res://scripts/ZombieBig.cs" id="1_c6c2p"]
 [ext_resource type="Texture2D" uid="uid://ylqj07r1qexp" path="res://assets/sprites/zombieBig.png" id="1_jhbn2"]
+[ext_resource type="Texture2D" uid="uid://ntn1n43hxdba" path="res://assets/sprites/shadow.png" id="3_qcn52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfuru"]
 atlas = ExtResource("1_jhbn2")
@@ -73,6 +74,11 @@ y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("1_c6c2p")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(0, 5.5)
+texture = ExtResource("3_qcn52")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g1mw4")
 animation = &"death"
@@ -84,9 +90,10 @@ shape = SubResource("RectangleShape2D_mouwd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
+target_desired_distance = 0.1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

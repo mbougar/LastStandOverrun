@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dipirvplsoecy"]
+[gd_scene load_steps=9 format=3 uid="uid://dipirvplsoecy"]
+
+[ext_resource type="Script" path="res://scripts/Fog.cs" id="1_ruxgc"]
 
 [sub_resource type="Shader" id="Shader_ci58d"]
 code = "shader_type canvas_item;
@@ -92,7 +94,11 @@ frequency = 0.075
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1wndr"]
 noise = SubResource("FastNoiseLite_n6v64")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ep7q"]
+size = Vector2(1484, 317)
+
 [node name="Fog" type="Node2D"]
+script = ExtResource("1_ruxgc")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = 1000
@@ -101,3 +107,10 @@ position = Vector2(-679, -132)
 color = Color(0.503638, 0.445887, 0.217672, 1)
 texture = SubResource("NoiseTexture2D_1wndr")
 polygon = PackedVector2Array(1136, 436, 960, 437, 796, 440, 662, 497, 651, 546, 632, 622, 622, 709, 624, 798, 850, 804, 1456, 807, 2096, 800, 2087, 724, 2082, 667, 2072, 611, 2076, 477, 1827, 433, 1585, 435, 1320, 425)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(657, 515)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, -9.5)
+shape = SubResource("RectangleShape2D_0ep7q")

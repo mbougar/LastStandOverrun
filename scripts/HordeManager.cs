@@ -9,15 +9,16 @@ public partial class HordeManager : Node2D
 	private Timer _spawnTimer;
 	private Timer _roundDelayTimer;
 	private Node2D _spawnArea;
+	private Global _global;
 
 	private Node _enemiesParent;
 	private int _currentRound = 1;
 	private int _enemiesToSpawn;
 	private int _enemiesKilled;
-	private int _totalEnemiesKilled = 0;
 
 	public override void _Ready()
 	{
+		_global = GetNode<Global>("/root/Global");
 		_enemyScenes.Add(GD.Load<PackedScene>("res://scenes/game/characters/Zombie.tscn"));
 		_enemyScenes.Add(GD.Load<PackedScene>("res://scenes/game/characters/ZombieBig.tscn"));
 
@@ -32,10 +33,10 @@ public partial class HordeManager : Node2D
 
 	private void StartNewRound()
 	{
+		_global.IncrementWave();
 		_enemiesToSpawn = 8 + (_currentRound - 1) * 8;
 		_enemiesKilled = 0;
 
-		GD.Print($"Starting Round {_currentRound}. Spawning {_enemiesToSpawn} enemies.");
 		_spawnTimer.Start();
 	}
 
@@ -83,12 +84,10 @@ public partial class HordeManager : Node2D
 	public void RegisterEnemyKilled()
 	{
 		_enemiesKilled++;
-		_totalEnemiesKilled++;
-		GD.Print($"Enemies killed: {_enemiesKilled}");
+		_global.IncrementKills();
 
 		if (_enemiesKilled >= 8 + (_currentRound - 1) * 8)
 		{
-			GD.Print($"Round {_currentRound} finished, enemies killed: {_enemiesKilled}");
 			_currentRound++;
 			_enemiesKilled = 0;
 			_roundDelayTimer.Start();

@@ -142,3 +142,4 @@ texture_focused = ExtResource("6_w2wvc")
 stretch_mode = 0
 
 [connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
+[connection signal="pressed" from="QuitButton" to="." method="OnQuitButtonPressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://clxi77hljtrvx"]
+[gd_scene load_steps=13 format=3 uid="uid://clxi77hljtrvx"]
 
 [ext_resource type="Texture2D" uid="uid://el5441uuxng7" path="res://assets/sprites/zombie.png" id="1_meifo"]
 [ext_resource type="Script" path="res://scripts/Zombie.cs" id="1_ykflb"]
+[ext_resource type="Texture2D" uid="uid://ntn1n43hxdba" path="res://assets/sprites/shadow.png" id="2_270yv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0x3g"]
 atlas = ExtResource("1_meifo")
@@ -87,10 +88,16 @@ shape = SubResource("RectangleShape2D_mouwd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
+target_desired_distance = 0.1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.5
 autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(0.5, 5.5)
+texture = ExtResource("2_270yv")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimationFinished"]
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

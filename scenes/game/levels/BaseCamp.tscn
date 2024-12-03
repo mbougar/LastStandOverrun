@@ -2306,7 +2306,7 @@ script = ExtResource("1_335ap")
 [node name="SpawnTimer" type="Timer" parent="HordeManager"]
 
 [node name="RoundDelayTimer" type="Timer" parent="HordeManager"]
-wait_time = 20.0
+wait_time = 5.0
 one_shot = true
 
 [node name="SpawnArea" type="Node2D" parent="HordeManager"]
@@ -2362,15 +2362,6 @@ z_index = 1000
 position = Vector2(-129, 436)
 
 [node name="UiGame" parent="." instance=ExtResource("31_kwf32")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 455.0
-offset_top = 471.0
-offset_right = 455.0
-offset_bottom = 471.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [connection signal="timeout" from="HordeManager/SpawnTimer" to="HordeManager" method="OnSpawnEnemy"]
 [connection signal="timeout" from="HordeManager/RoundDelayTimer" to="HordeManager" method="OnRoundDelayTimeout"]

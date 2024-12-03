@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bolhrssdvqvo2"]
+[gd_scene load_steps=16 format=3 uid="uid://bolhrssdvqvo2"]
 
 [ext_resource type="Texture2D" uid="uid://bc3ibvi225hjs" path="res://assets/sprites/Drone.png" id="1_4jydc"]
 [ext_resource type="Script" path="res://scripts/Drone.cs" id="1_bsvk2"]
+[ext_resource type="Texture2D" uid="uid://ntn1n43hxdba" path="res://assets/sprites/shadow.png" id="3_kc7be"]
+[ext_resource type="AudioStream" uid="uid://blc4eqm4sy6t4" path="res://assets/sounds/droneShotSound.wav" id="4_cetoy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2iajw"]
 atlas = ExtResource("1_4jydc")
@@ -70,6 +72,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_p11m2"]
 radius = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uexkn"]
+radius = 187.043
+
 [node name="Drone" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_bsvk2")
@@ -83,5 +88,25 @@ frame_progress = 0.180344
 shape = SubResource("CircleShape2D_p11m2")
 disabled = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-15, 18)
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(4, 4)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(0, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("3_kc7be")
+
+[node name="FireCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cetoy")
+volume_db = -5.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_uexkn")
+
+[connection signal="timeout" from="FireCooldownTimer" to="." method="ResetFire"]

@@ -14,6 +14,9 @@ public partial class Zombie : Enemy
 
 	public override void _Ready()
 	{
+		var global = GetNode<Global>("/root/Global");
+		int currentWave = global.CurrentWave;
+		Health = (int)(BaseHealth * (1.0f + (currentWave - 1) * 0.5f));
 		_navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		_player = GetNode<Node2D>("/root/BaseCamp/Player");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");

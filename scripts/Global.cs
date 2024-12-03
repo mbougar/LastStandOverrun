@@ -3,6 +3,9 @@ using Godot;
 public partial class Global : Node
 {
 	public Node CurrentScene { get; set; }
+	public int CurrentWave { get; set; } = 0;
+	public int CurrentKills { get; set; } = 0;
+	public int CurrentPlayerHp { get; set; } = 0;
 
 	public override void _Ready()
 	{
@@ -24,5 +27,20 @@ public partial class Global : Node
 		CurrentScene = nextScene.Instantiate();
 		GetTree().Root.AddChild(CurrentScene);
 		GetTree().CurrentScene = CurrentScene;
+	}
+	
+	public void IncrementWave()
+	{
+		CurrentWave++;
+	}
+	
+	public void IncrementKills()
+	{
+		CurrentKills++;
+	}
+	
+	public void GetCurrentHp(int hp)
+	{
+		CurrentPlayerHp = hp;
 	}
 }
