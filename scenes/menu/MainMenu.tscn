@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://t38od2oaniv4"]
+[gd_scene load_steps=18 format=3 uid="uid://t38od2oaniv4"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_ceal2"]
 [ext_resource type="Texture2D" uid="uid://j3rou86qhoca" path="res://assets/sprites/backgoundLandscape.png" id="1_pollg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c0we68qcg642o" path="res://assets/sprites/ButtonsUI/Quit/Quit1.png" id="12_rv5ba"]
 [ext_resource type="Texture2D" uid="uid://jwqvjf06sfyp" path="res://assets/sprites/ButtonsUI/Quit/Quit4.png" id="13_ogww8"]
 [ext_resource type="Texture2D" uid="uid://mlcpny6kyq47" path="res://assets/sprites/ButtonsUI/Quit/Quit2.png" id="14_0uokt"]
+[ext_resource type="AudioStream" uid="uid://ccuscxrblflrb" path="res://assets/sounds/menuMusic.mp3" id="17_qwbrn"]
 
 [node name="MainMenu2" type="Control"]
 layout_mode = 3
@@ -140,6 +141,12 @@ texture_pressed = ExtResource("13_ogww8")
 texture_hover = ExtResource("14_0uokt")
 texture_focused = ExtResource("6_w2wvc")
 stretch_mode = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(575, 353)
+stream = ExtResource("17_qwbrn")
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
 [connection signal="pressed" from="QuitButton" to="." method="OnQuitButtonPressed"]
