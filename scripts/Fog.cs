@@ -16,7 +16,7 @@ public partial class Fog : Node2D
 	{
 		if (playerInside != null && _canTakeDamage)
 		{
-			playerInside.TakeDamage(40);
+			playerInside.TakeDamage(10);
 			_canTakeDamage = false;
 			_damageTimer.Start();
 		}

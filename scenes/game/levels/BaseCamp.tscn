@@ -1,4 +1,4 @@
-[gd_scene load_steps=241 format=4 uid="uid://dfmxuvpyn4uue"]
+[gd_scene load_steps=242 format=4 uid="uid://dfmxuvpyn4uue"]
 
 [ext_resource type="Script" path="res://scripts/HordeManager.cs" id="1_335ap"]
 [ext_resource type="PackedScene" uid="uid://dipirvplsoecy" path="res://scenes/Fog.tscn" id="1_dauw1"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://502jw802lhj" path="res://scenes/game/characters/Player.tscn" id="28_m70el"]
 [ext_resource type="PackedScene" uid="uid://bolhrssdvqvo2" path="res://scenes/Drone.tscn" id="29_xqonm"]
 [ext_resource type="PackedScene" uid="uid://begykm2oubq3v" path="res://scenes/menu/UiGame.tscn" id="31_kwf32"]
+[ext_resource type="PackedScene" uid="uid://ca8egg2r68ad6" path="res://scenes/menu/PauseMenu.tscn" id="33_ck3hb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgi8b"]
 size = Vector2(567, 63)
@@ -2355,13 +2356,16 @@ position = Vector2(454, 480)
 [node name="Drone" parent="." instance=ExtResource("29_xqonm")]
 z_index = 1000
 z_as_relative = false
-position = Vector2(-79, -5)
+position = Vector2(-73, 80)
 
 [node name="Fog" parent="." instance=ExtResource("1_dauw1")]
 z_index = 1000
 position = Vector2(-129, 436)
 
 [node name="UiGame" parent="." instance=ExtResource("31_kwf32")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("33_ck3hb")]
+visible = false
 
 [connection signal="timeout" from="HordeManager/SpawnTimer" to="HordeManager" method="OnSpawnEnemy"]
 [connection signal="timeout" from="HordeManager/RoundDelayTimer" to="HordeManager" method="OnRoundDelayTimeout"]

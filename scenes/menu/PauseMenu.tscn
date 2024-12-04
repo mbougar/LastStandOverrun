@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://ca8egg2r68ad6"]
+
+[ext_resource type="Script" path="res://scripts/PauseMenu.cs" id="1_2tpwc"]
+[ext_resource type="Texture2D" uid="uid://dxxbyhc2p4343" path="res://assets/sprites/ButtonsUI/Resume/Resume1.png" id="1_i3hyr"]
+[ext_resource type="Texture2D" uid="uid://b2i0p27ch3acp" path="res://assets/sprites/ButtonsUI/Resume/Resume4.png" id="2_7l7sq"]
+[ext_resource type="Texture2D" uid="uid://dbqk5joxbji25" path="res://assets/sprites/ButtonsUI/Resume/Resume2.png" id="3_p7r8h"]
+[ext_resource type="Texture2D" uid="uid://b28k7pl7r6ueh" path="res://assets/sprites/ButtonsUI/ButtonFocus.png" id="4_rtnwo"]
+[ext_resource type="Texture2D" uid="uid://c0we68qcg642o" path="res://assets/sprites/ButtonsUI/Quit/Quit1.png" id="5_h2pyo"]
+[ext_resource type="Texture2D" uid="uid://jwqvjf06sfyp" path="res://assets/sprites/ButtonsUI/Quit/Quit4.png" id="6_bospl"]
+[ext_resource type="Texture2D" uid="uid://5ax4gxy4jsmd" path="res://assets/sprites/ButtonsUI/Main Menu/Main Menu1.png" id="6_p6lgw"]
+[ext_resource type="Texture2D" uid="uid://mlcpny6kyq47" path="res://assets/sprites/ButtonsUI/Quit/Quit2.png" id="7_j0xur"]
+[ext_resource type="Texture2D" uid="uid://bdk0o0ydqv48u" path="res://assets/sprites/ButtonsUI/Main Menu/Main Menu4.png" id="7_mxg8b"]
+[ext_resource type="Texture2D" uid="uid://ba01f55puause" path="res://assets/sprites/ButtonsUI/Main Menu/Main Menu2.png" id="8_gs4b3"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_2tpwc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.472222
+anchor_top = 0.472222
+anchor_right = 0.527778
+anchor_bottom = 0.527778
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Resume" type="TextureButton" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../MainMenu")
+focus_next = NodePath("../MainMenu")
+focus_previous = NodePath("../Quit")
+texture_normal = ExtResource("1_i3hyr")
+texture_pressed = ExtResource("2_7l7sq")
+texture_hover = ExtResource("3_p7r8h")
+texture_focused = ExtResource("4_rtnwo")
+stretch_mode = 5
+
+[node name="MainMenu" type="TextureButton" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Resume")
+texture_normal = ExtResource("6_p6lgw")
+texture_pressed = ExtResource("7_mxg8b")
+texture_hover = ExtResource("8_gs4b3")
+texture_focused = ExtResource("4_rtnwo")
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenu")
+focus_neighbor_bottom = NodePath("../Resume")
+focus_next = NodePath("../Resume")
+focus_previous = NodePath("../MainMenu")
+texture_normal = ExtResource("5_h2pyo")
+texture_pressed = ExtResource("6_bospl")
+texture_hover = ExtResource("7_j0xur")
+texture_focused = ExtResource("4_rtnwo")
+stretch_mode = 5
+
+[connection signal="pressed" from="Control/VBoxContainer/Resume" to="." method="OnResumePressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MainMenu" to="." method="OnMainMenuPressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="OnQuitPressed"]
