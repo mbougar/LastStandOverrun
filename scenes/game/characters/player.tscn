@@ -58,7 +58,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycp67"]
-size = Vector2(16, 22)
+size = Vector2(20, 27)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_isieq")
@@ -98,7 +98,7 @@ one_shot = true
 [node name="HitboxArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
-position = Vector2(0, 1)
+position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_ycp67")
 
 [connection signal="body_entered" from="HitboxArea" to="." method="OnEnemyEnteredArea"]

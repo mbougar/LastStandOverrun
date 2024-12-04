@@ -5,7 +5,7 @@ public partial class Global : Node
 	public Node CurrentScene { get; set; }
 	public int CurrentWave { get; set; } = 0;
 	public int CurrentKills { get; set; } = 0;
-	public int CurrentPlayerHp { get; set; } = 0;
+	public int CurrentPlayerHp { get; set; } = 100;
 
 	public override void _Ready()
 	{
@@ -42,5 +42,12 @@ public partial class Global : Node
 	public void GetCurrentHp(int hp)
 	{
 		CurrentPlayerHp = hp;
+	}
+	
+	public void ResetGame()
+	{
+		CurrentWave = 0;
+		CurrentKills = 0;
+		CurrentPlayerHp = 100;
 	}
 }

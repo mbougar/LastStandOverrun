@@ -114,3 +114,10 @@ position = Vector2(657, 515)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(5, -9.5)
 shape = SubResource("RectangleShape2D_0ep7q")
+
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="OnAreaEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="OnAreaExited"]
+[connection signal="timeout" from="DamageTimer" to="." method="ResetDamage"]

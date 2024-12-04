@@ -27,7 +27,8 @@ public partial class HordeManager : Node2D
 		_spawnArea = GetNode<Node2D>("SpawnArea");
 
 		_enemiesParent = GetNode("Enemies");
-
+		_global.ResetGame();
+		
 		StartNewRound();
 	}
 

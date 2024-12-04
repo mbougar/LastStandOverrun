@@ -75,11 +75,12 @@ public partial class Player : CharacterBody2D
 		{
 			enemiesInside.Add(body);
 		}
-		
-		if (body is Fog)
-		{
-			hp -= 100;
-		}
+	}
+	
+	public void TakeDamage(int damage)
+	{
+		hp -= damage;
+		_global.GetCurrentHp(hp);
 	}
 	
 	private void OnEnemyExitedArea(Node body)
