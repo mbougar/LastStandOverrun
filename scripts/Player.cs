@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public partial class Player : CharacterBody2D
 {
-	[Export]
-	private int speed = 300;
+	[Export] private int speed = 300;
 	private int hp = 100;
+	private int resistance = 0;
 	private Vector2 currentVelocity;
 
 	private AnimatedSprite2D _animatedSprite;
@@ -27,7 +27,6 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
-
 		handleInput();
 
 		Velocity = currentVelocity;
@@ -47,16 +46,16 @@ public partial class Player : CharacterBody2D
 		{
 			_animatedSprite.Play("idle");
 		}
-		
+
 		foreach (var enemy in enemiesInside)
 		{
 			if (enemy is Enemy)
 			{
-				hp -= 1;
+				TakeDamage(1);
 				_global.GetCurrentHp(hp);
 			}
 		}
-		
+
 		if (hp <= 0)
 		{
 			_global.GotoScene("res://scenes/menu/MainMenu.tscn");
@@ -68,7 +67,7 @@ public partial class Player : CharacterBody2D
 		currentVelocity = Input.GetVector("left", "right", "up", "down");
 		currentVelocity *= speed;
 	}
-	
+
 	private void OnEnemyEnteredArea(Node body)
 	{
 		if (body is Enemy)
@@ -76,18 +75,30 @@ public partial class Player : CharacterBody2D
 			enemiesInside.Add(body);
 		}
 	}
-	
+
 	public void TakeDamage(int damage)
 	{
 		hp -= damage;
 		_global.GetCurrentHp(hp);
 	}
-	
+
 	private void OnEnemyExitedArea(Node body)
 	{
 		if (body is Enemy)
 		{
 			enemiesInside.Remove(body);
 		}
+	}
+
+	public void IncreaseSpeed()
+	{
+		speed += 100;
+		GD.Print("Speed increased!");
+	}
+
+	public void IncreaseResistance()
+	{
+		resistance += 20;
+		GD.Print("Resistance increased!");
 	}
 }

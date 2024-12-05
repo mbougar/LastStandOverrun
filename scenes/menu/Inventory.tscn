@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://52pknf0e7bow"]
+
+[ext_resource type="FontFile" uid="uid://c3omxke8loaxv" path="res://assets/fonts/ponderosa.ttf" id="1_sgjel"]
+[ext_resource type="Script" path="res://scripts/Inventory.cs" id="1_sjgdr"]
+[ext_resource type="Texture2D" uid="uid://cvqaury5f4yod" path="res://assets/items/inventoryBackground.png" id="2_6eafh"]
+[ext_resource type="Texture2D" uid="uid://fr3min6kptvi" path="res://assets/items/heartIcon.png" id="2_117b5"]
+[ext_resource type="Texture2D" uid="uid://kee8y5xa51yu" path="res://assets/items/zombieFootIcon.png" id="4_62lke"]
+[ext_resource type="Texture2D" uid="uid://cp6byi6lh10uh" path="res://assets/items/inventorySlot.png" id="4_lohma"]
+[ext_resource type="Texture2D" uid="uid://d02385fltod8o" path="res://assets/items/zombieHandIcon.png" id="5_pbjyu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_13qnp"]
+content_margin_left = 30.0
+content_margin_top = 50.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+texture = ExtResource("2_6eafh")
+region_rect = Rect2(0, 0, 48, 32)
+
+[node name="Inventory" type="CanvasLayer"]
+
+[node name="ItemList" type="ItemList" parent="."]
+anchors_preset = -1
+anchor_left = 0.391
+anchor_top = 0.269
+anchor_right = 0.609
+anchor_bottom = 0.731
+offset_left = 0.567963
+offset_top = -0.312012
+offset_right = -0.568054
+offset_bottom = 0.311981
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_sgjel")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/panel = SubResource("StyleBoxTexture_13qnp")
+allow_search = false
+auto_height = true
+item_count = 3
+max_columns = 3
+same_column_width = true
+fixed_column_width = 55
+icon_mode = 0
+fixed_icon_size = Vector2i(50, 50)
+item_0/text = "12"
+item_0/icon = ExtResource("2_117b5")
+item_1/text = "1"
+item_1/icon = ExtResource("4_62lke")
+item_2/text = "4"
+item_2/icon = ExtResource("5_pbjyu")
+script = ExtResource("1_sjgdr")
+inventorySize = 6
+blankIcon = ExtResource("4_lohma")
