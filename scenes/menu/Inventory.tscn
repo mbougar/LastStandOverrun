@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://52pknf0e7bow"]
+[gd_scene load_steps=8 format=3 uid="uid://52pknf0e7bow"]
 
 [ext_resource type="FontFile" uid="uid://c3omxke8loaxv" path="res://assets/fonts/ponderosa.ttf" id="1_sgjel"]
 [ext_resource type="Script" path="res://scripts/Inventory.cs" id="1_sjgdr"]
 [ext_resource type="Texture2D" uid="uid://cvqaury5f4yod" path="res://assets/items/inventoryBackground.png" id="2_6eafh"]
 [ext_resource type="Texture2D" uid="uid://fr3min6kptvi" path="res://assets/items/heartIcon.png" id="2_117b5"]
 [ext_resource type="Texture2D" uid="uid://kee8y5xa51yu" path="res://assets/items/zombieFootIcon.png" id="4_62lke"]
-[ext_resource type="Texture2D" uid="uid://cp6byi6lh10uh" path="res://assets/items/inventorySlot.png" id="4_lohma"]
 [ext_resource type="Texture2D" uid="uid://d02385fltod8o" path="res://assets/items/zombieHandIcon.png" id="5_pbjyu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_13qnp"]
@@ -17,6 +16,7 @@ texture = ExtResource("2_6eafh")
 region_rect = Rect2(0, 0, 48, 32)
 
 [node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_sjgdr")
 
 [node name="ItemList" type="ItemList" parent="."]
 anchors_preset = -1
@@ -48,6 +48,3 @@ item_1/text = "1"
 item_1/icon = ExtResource("4_62lke")
 item_2/text = "4"
 item_2/icon = ExtResource("5_pbjyu")
-script = ExtResource("1_sjgdr")
-inventorySize = 6
-blankIcon = ExtResource("4_lohma")

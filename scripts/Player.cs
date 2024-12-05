@@ -8,6 +8,11 @@ public partial class Player : CharacterBody2D
 	private int hp = 100;
 	private int resistance = 0;
 	private Vector2 currentVelocity;
+	
+	private string texturePath1 = "res://assets/items/zombieFootIconTransparent.png";
+	private string texturePath2 = "res://assets/items/heartIconTransparent.png";
+	private string texturePath3 = "res://assets/items/zombieHandIconTransparent.png";
+	private Texture2D[] _textures = new Texture2D[3];
 
 	private AnimatedSprite2D _animatedSprite;
 	private AudioStreamPlayer2D _audioPlayer;
@@ -15,9 +20,15 @@ public partial class Player : CharacterBody2D
 	private Global _global;
 	private Area2D _hitboxArea;
 	private List<Node> enemiesInside = new List<Node>();
+	private Inventory _inventory;
 
 	public override void _Ready()
 	{
+		_textures[0] = (Texture2D)ResourceLoader.Load(texturePath1);
+		_textures[1] = (Texture2D)ResourceLoader.Load(texturePath2);
+		_textures[2] = (Texture2D)ResourceLoader.Load(texturePath3);
+		
+		_inventory = GetNode<Inventory>("Inventory");
 		_hitboxArea = GetNode<Area2D>("HitboxArea");
 		_global = GetNode<Global>("/root/Global");
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -78,7 +89,7 @@ public partial class Player : CharacterBody2D
 
 	public void TakeDamage(int damage)
 	{
-		hp -= damage;
+		hp -= Mathf.RoundToInt(damage * (100f / (100f + resistance)));
 		_global.GetCurrentHp(hp);
 	}
 
@@ -93,12 +104,36 @@ public partial class Player : CharacterBody2D
 	public void IncreaseSpeed()
 	{
 		speed += 100;
-		GD.Print("Speed increased!");
+		_inventory.AddItem(
+			new Item(
+				"Zombie foot",
+				_textures[0],
+				1
+			)
+		);
 	}
 
 	public void IncreaseResistance()
 	{
 		resistance += 20;
-		GD.Print("Resistance increased!");
+		_inventory.AddItem(
+			new Item(
+				"Zombie heart",
+				_textures[1],
+				1
+			)
+		);
+	}
+	
+	// Ahora mismo no hace nada todavia  a parte de darte el objeto en el inventario
+	public void IncreaseDamage()
+	{
+		_inventory.AddItem(
+			new Item(
+				"Zombie arm",
+				_textures[2],
+				1
+			)
+		);
 	}
 }
