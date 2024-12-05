@@ -80,6 +80,27 @@ public partial class Zombie : Enemy
 	protected override void Die()
 	{
 		_hordeManager.RegisterEnemyKilled();
+
+		RandomNumberGenerator rng = new RandomNumberGenerator();
+		int dropChance = rng.RandiRange(0, 100);
+
+		if (dropChance < 30)
+		{
+			DropItem();
+		}
+
 		QueueFree();
+	}
+	
+	private void DropItem()
+	{
+		PackedScene itemDropScene = (PackedScene)ResourceLoader.Load("res://scenes/items/ItemDrop.tscn");
+		if (itemDropScene != null)
+		{
+			Node2D itemDropInstance = (Node2D)itemDropScene.Instantiate();
+			itemDropInstance.GlobalPosition = GlobalPosition;
+
+			GetParent().AddChild(itemDropInstance);
+		}
 	}
 }

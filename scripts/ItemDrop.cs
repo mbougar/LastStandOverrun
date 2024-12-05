@@ -13,6 +13,7 @@ public partial class ItemDrop : Node2D
 
 	public override void _Ready()
 	{
+		
 		if (sprite != null && area != null)
 		{
 			Texture2D[] textures = new Texture2D[3];
@@ -22,12 +23,13 @@ public partial class ItemDrop : Node2D
 
 			RandomNumberGenerator rng = new RandomNumberGenerator();
 			_randomNum = rng.RandiRange(0, textures.Length - 1);
+			
 
 			sprite.Texture = textures[_randomNum];
 		}
 		else
 		{
-			GD.PrintErr("Sprite or Area2D is not assigned.");
+			QueueFree();
 		}
 	}
 
@@ -44,6 +46,7 @@ public partial class ItemDrop : Node2D
 					player.IncreaseResistance();
 					break;
 				case 2:
+					player.IncreaseDamage();
 					break;
 			}
 			QueueFree();

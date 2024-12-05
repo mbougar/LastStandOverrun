@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://bolhrssdvqvo2" path="res://scenes/Drone.tscn" id="29_xqonm"]
 [ext_resource type="PackedScene" uid="uid://begykm2oubq3v" path="res://scenes/menu/UiGame.tscn" id="31_kwf32"]
 [ext_resource type="PackedScene" uid="uid://ca8egg2r68ad6" path="res://scenes/menu/PauseMenu.tscn" id="33_ck3hb"]
-[ext_resource type="PackedScene" uid="uid://52pknf0e7bow" path="res://scenes/menu/Inventory.tscn" id="33_xt08m"]
+[ext_resource type="PackedScene" uid="uid://52pknf0e7bow" path="res://scenes/menu/InventoryCanvas.tscn" id="33_iucat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgi8b"]
 size = Vector2(567, 63)
@@ -2368,7 +2368,7 @@ position = Vector2(-129, 436)
 [node name="PauseMenu" parent="." instance=ExtResource("33_ck3hb")]
 visible = false
 
-[node name="Inventory" parent="." instance=ExtResource("33_xt08m")]
+[node name="InventoryCanvas" parent="." instance=ExtResource("33_iucat")]
 
 [connection signal="timeout" from="HordeManager/SpawnTimer" to="HordeManager" method="OnSpawnEnemy"]
 [connection signal="timeout" from="HordeManager/RoundDelayTimer" to="HordeManager" method="OnRoundDelayTimeout"]

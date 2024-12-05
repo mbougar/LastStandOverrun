@@ -28,7 +28,7 @@ public partial class Player : CharacterBody2D
 		_textures[1] = (Texture2D)ResourceLoader.Load(texturePath2);
 		_textures[2] = (Texture2D)ResourceLoader.Load(texturePath3);
 		
-		_inventory = GetNode<Inventory>("Inventory");
+		_inventory = GetNode<Inventory>("/root/BaseCamp/InventoryCanvas/Inventory");
 		_hitboxArea = GetNode<Area2D>("HitboxArea");
 		_global = GetNode<Global>("/root/Global");
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -103,8 +103,8 @@ public partial class Player : CharacterBody2D
 
 	public void IncreaseSpeed()
 	{
-		speed += 100;
-		_inventory.AddItem(
+		speed += 10;
+		_inventory.AddInventoryItem(
 			new Item(
 				"Zombie foot",
 				_textures[0],
@@ -115,8 +115,8 @@ public partial class Player : CharacterBody2D
 
 	public void IncreaseResistance()
 	{
-		resistance += 20;
-		_inventory.AddItem(
+		resistance += 10;
+		_inventory.AddInventoryItem(
 			new Item(
 				"Zombie heart",
 				_textures[1],
@@ -128,8 +128,7 @@ public partial class Player : CharacterBody2D
 	// Ahora mismo no hace nada todavia  a parte de darte el objeto en el inventario
 	public void IncreaseDamage()
 	{
-		_inventory.AddItem(
-			new Item(
+		_inventory.AddInventoryItem(new Item(
 				"Zombie arm",
 				_textures[2],
 				1
