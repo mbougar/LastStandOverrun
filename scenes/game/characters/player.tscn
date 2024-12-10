@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_isieq"]
 [ext_resource type="Texture2D" uid="uid://ntn1n43hxdba" path="res://assets/sprites/shadow.png" id="2_3tn6u"]
 [ext_resource type="Texture2D" uid="uid://coqbyn13wqo0g" path="res://assets/sprites/character.png" id="2_btust"]
-[ext_resource type="PackedScene" uid="uid://dygb6a1oxsbnw" path="res://scenes/Gun.tscn" id="3_66w7d"]
+[ext_resource type="PackedScene" uid="uid://dygb6a1oxsbnw" path="res://scenes/gun.tscn" id="3_66w7d"]
 [ext_resource type="AudioStream" uid="uid://dsrmo3eoyisft" path="res://assets/sounds/walkingSoundGrass.mp3" id="4_hu0j1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0yj7"]

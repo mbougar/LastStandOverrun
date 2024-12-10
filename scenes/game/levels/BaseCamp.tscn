@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://jqtsnr3h7i2j" path="res://assets/sprites/Pixelwood Valley 1.0/Wooden/5.png" id="25_dvxmo"]
 [ext_resource type="Texture2D" uid="uid://vg60lh088xcy" path="res://assets/sprites/Pixelwood Valley 1.0/Wooden/6.png" id="26_qly34"]
 [ext_resource type="Texture2D" uid="uid://byh42f87eo03w" path="res://assets/sprites/Pixelwood Valley 1.0/Trees/Tree1.png" id="27_gnl0c"]
-[ext_resource type="PackedScene" uid="uid://502jw802lhj" path="res://scenes/game/characters/Player.tscn" id="28_m70el"]
+[ext_resource type="PackedScene" uid="uid://502jw802lhj" path="res://scenes/game/characters/player.tscn" id="28_m70el"]
 [ext_resource type="PackedScene" uid="uid://bolhrssdvqvo2" path="res://scenes/Drone.tscn" id="29_xqonm"]
 [ext_resource type="PackedScene" uid="uid://begykm2oubq3v" path="res://scenes/menu/UiGame.tscn" id="31_kwf32"]
 [ext_resource type="PackedScene" uid="uid://ca8egg2r68ad6" path="res://scenes/menu/PauseMenu.tscn" id="33_ck3hb"]
@@ -2365,10 +2365,10 @@ position = Vector2(-129, 436)
 
 [node name="UiGame" parent="." instance=ExtResource("31_kwf32")]
 
+[node name="InventoryCanvas" parent="." instance=ExtResource("33_iucat")]
+
 [node name="PauseMenu" parent="." instance=ExtResource("33_ck3hb")]
 visible = false
-
-[node name="InventoryCanvas" parent="." instance=ExtResource("33_iucat")]
 
 [connection signal="timeout" from="HordeManager/SpawnTimer" to="HordeManager" method="OnSpawnEnemy"]
 [connection signal="timeout" from="HordeManager/RoundDelayTimer" to="HordeManager" method="OnRoundDelayTimeout"]

@@ -16,6 +16,7 @@ region_rect = Rect2(0, 0, 48, 32)
 [node name="InventoryCanvas" type="CanvasLayer"]
 
 [node name="Inventory" type="ItemList" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 0.391
 anchor_top = 0.269

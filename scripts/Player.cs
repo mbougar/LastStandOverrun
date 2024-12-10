@@ -9,9 +9,9 @@ public partial class Player : CharacterBody2D
 	private int resistance = 0;
 	private Vector2 currentVelocity;
 	
-	private string texturePath1 = "res://assets/items/zombieFootIconTransparent.png";
-	private string texturePath2 = "res://assets/items/heartIconTransparent.png";
-	private string texturePath3 = "res://assets/items/zombieHandIconTransparent.png";
+	private string texturePath1 = "res://assets/items/zombieFootIcon.png";
+	private string texturePath2 = "res://assets/items/heartIcon.png";
+	private string texturePath3 = "res://assets/items/zombieHandIcon.png";
 	private Texture2D[] _textures = new Texture2D[3];
 
 	private AnimatedSprite2D _animatedSprite;
