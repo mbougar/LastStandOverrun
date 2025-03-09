@@ -69,6 +69,7 @@ public partial class Player : CharacterBody2D
 
 		if (hp <= 0)
 		{
+			SubmitScore(_global.CurrentKills * 100);
 			_global.GotoScene("res://scenes/menu/MainMenu.tscn");
 		}
 	}
@@ -112,6 +113,17 @@ public partial class Player : CharacterBody2D
 			)
 		);
 	}
+	
+	public async void SubmitScore(int score)
+	{
+		if (string.IsNullOrEmpty(_global.Username))
+		{
+			GD.Print("No user logged in. Cannot submit score.");
+			return;
+		}
+		await _global.SubmitScoreAsync(_global.Username, score);
+	}
+
 
 	public void IncreaseResistance()
 	{

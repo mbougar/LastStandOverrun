@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://t38od2oaniv4"]
+[gd_scene load_steps=20 format=3 uid="uid://t38od2oaniv4"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_ceal2"]
 [ext_resource type="Texture2D" uid="uid://j3rou86qhoca" path="res://assets/sprites/backgoundLandscape.png" id="1_pollg"]
@@ -17,8 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://jwqvjf06sfyp" path="res://assets/sprites/ButtonsUI/Quit/Quit4.png" id="13_ogww8"]
 [ext_resource type="Texture2D" uid="uid://mlcpny6kyq47" path="res://assets/sprites/ButtonsUI/Quit/Quit2.png" id="14_0uokt"]
 [ext_resource type="AudioStream" uid="uid://ccuscxrblflrb" path="res://assets/sounds/menuMusic.mp3" id="17_qwbrn"]
+[ext_resource type="Texture2D" uid="uid://ddnjdg861ncu7" path="res://assets/sprites/ButtonsUI/TextEdit.png" id="18_1fix5"]
+[ext_resource type="FontFile" uid="uid://c3omxke8loaxv" path="res://assets/fonts/ponderosa.ttf" id="18_ehvi0"]
 
-[node name="MainMenu2" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -147,6 +149,50 @@ position = Vector2(575, 353)
 stream = ExtResource("17_qwbrn")
 autoplay = true
 parameters/looping = false
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042
+anchor_top = 0.014
+anchor_right = 0.352
+anchor_bottom = 0.981
+offset_left = -0.384003
+offset_top = -0.0720005
+offset_right = -0.504028
+offset_bottom = 0.311951
+texture = ExtResource("18_1fix5")
+
+[node name="Leaderboard" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.052
+anchor_top = 0.136
+anchor_right = 0.341
+anchor_bottom = 0.798
+offset_left = 0.0960007
+offset_top = -0.128006
+offset_right = 0.167969
+offset_bottom = -0.104004
+theme_override_fonts/font = ExtResource("18_ehvi0")
+allow_search = false
+same_column_width = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.053
+anchor_top = 0.08
+anchor_right = 0.341
+anchor_bottom = 0.133
+offset_left = -0.0560036
+offset_top = 0.159996
+offset_right = 0.167969
+offset_bottom = -0.183998
+theme_override_fonts/font = ExtResource("18_ehvi0")
+text = "Leaderboard"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="pressed" from="PlayButton" to="." method="OnPlayButtonPressed"]
 [connection signal="pressed" from="QuitButton" to="." method="OnQuitButtonPressed"]

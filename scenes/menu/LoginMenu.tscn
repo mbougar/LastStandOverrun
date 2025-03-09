@@ -1,0 +1,213 @@
+[gd_scene load_steps=17 format=3 uid="uid://chp4q7l4pelmn"]
+
+[ext_resource type="Script" path="res://scripts/LoginMenu.cs" id="1_qtw34"]
+[ext_resource type="Texture2D" uid="uid://j3rou86qhoca" path="res://assets/sprites/backgoundLandscape.png" id="2_y8ywp"]
+[ext_resource type="Texture2D" uid="uid://cwfj6psvhctwh" path="res://assets/sprites/logoTransparent.png" id="3_uthu7"]
+[ext_resource type="Texture2D" uid="uid://dbrj2w428wnil" path="res://assets/sprites/ButtonsUI/Login/Login1.png" id="4_cpuay"]
+[ext_resource type="Texture2D" uid="uid://ddnjdg861ncu7" path="res://assets/sprites/ButtonsUI/TextEdit.png" id="4_te2vj"]
+[ext_resource type="Texture2D" uid="uid://du4dmcsdbq6yp" path="res://assets/sprites/ButtonsUI/Login/Login4.png" id="5_87j6o"]
+[ext_resource type="FontFile" uid="uid://c3omxke8loaxv" path="res://assets/fonts/ponderosa.ttf" id="5_g7tqf"]
+[ext_resource type="Texture2D" uid="uid://do5q23adow0aq" path="res://assets/sprites/ButtonsUI/Login/Login2.png" id="6_wrtmt"]
+[ext_resource type="Texture2D" uid="uid://b28k7pl7r6ueh" path="res://assets/sprites/ButtonsUI/ButtonFocus.png" id="7_1yhj4"]
+[ext_resource type="Texture2D" uid="uid://g1275si0jn7a" path="res://assets/sprites/ButtonsUI/Register/Register1.png" id="8_ntbhg"]
+[ext_resource type="Texture2D" uid="uid://20dk82pp1a2b" path="res://assets/sprites/ButtonsUI/Register/Register4.png" id="9_12odo"]
+[ext_resource type="Texture2D" uid="uid://bv6l8bli4it84" path="res://assets/sprites/ButtonsUI/Register/Register2.png" id="10_mf0tf"]
+[ext_resource type="Texture2D" uid="uid://dbukioyqnxb2u" path="res://assets/sprites/ButtonsUI/Back/Back1.png" id="13_st0uv"]
+[ext_resource type="Texture2D" uid="uid://bqn2i4f3iq2u2" path="res://assets/sprites/ButtonsUI/Back/Back4.png" id="14_qdqhl"]
+[ext_resource type="Texture2D" uid="uid://dofdp2lg7lgvj" path="res://assets/sprites/ButtonsUI/Back/Back2.png" id="15_ol8wi"]
+[ext_resource type="AudioStream" uid="uid://ccuscxrblflrb" path="res://assets/sounds/menuMusic.mp3" id="17_l4v3f"]
+
+[node name="LoginMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qtw34")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y8ywp")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.028
+anchor_right = 0.59
+anchor_bottom = 0.347
+offset_left = 0.179962
+offset_top = -0.144001
+offset_right = -0.180115
+offset_bottom = 0.143997
+grow_horizontal = 2
+texture = ExtResource("3_uthu7")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = 0.415
+anchor_right = 0.578
+anchor_bottom = 0.481
+offset_left = -0.144012
+offset_top = 0.0799866
+offset_right = 0.143982
+offset_bottom = 0.311981
+texture = ExtResource("4_te2vj")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = 0.478
+anchor_right = 0.578
+anchor_bottom = 0.545
+offset_left = -0.144012
+offset_top = 0.255981
+offset_right = 0.143982
+offset_bottom = -0.160004
+texture = ExtResource("4_te2vj")
+
+[node name="Username" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.415
+anchor_right = 0.576
+anchor_bottom = 0.471
+offset_left = 0.552002
+offset_top = 3.08002
+offset_right = -0.552002
+offset_bottom = -0.207977
+theme_override_fonts/font = ExtResource("5_g7tqf")
+placeholder_text = "Username"
+alignment = 1
+flat = true
+
+[node name="Password" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.48
+anchor_right = 0.576
+anchor_bottom = 0.535
+offset_left = 0.552002
+offset_top = 0.960022
+offset_right = -0.552002
+offset_bottom = 0.319977
+theme_override_fonts/font = ExtResource("5_g7tqf")
+placeholder_text = "Password"
+alignment = 1
+flat = true
+secret = true
+
+[node name="LoginButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = 0.548
+anchor_right = 0.578
+anchor_bottom = 0.617
+offset_left = -0.144012
+offset_top = -0.104034
+offset_right = 0.143982
+offset_bottom = 0.18396
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../RegisterButton")
+focus_next = NodePath("../RegisterButton")
+texture_normal = ExtResource("4_cpuay")
+texture_pressed = ExtResource("5_87j6o")
+texture_hover = ExtResource("6_wrtmt")
+texture_focused = ExtResource("7_1yhj4")
+stretch_mode = 0
+
+[node name="RegisterButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = 0.619
+anchor_right = 0.578
+anchor_bottom = 0.688
+offset_left = -0.144012
+offset_top = -0.112
+offset_right = 0.143982
+offset_bottom = 0.175995
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../LoginButton")
+focus_previous = NodePath("../LoginButton")
+texture_normal = ExtResource("8_ntbhg")
+texture_pressed = ExtResource("9_12odo")
+texture_hover = ExtResource("10_mf0tf")
+texture_focused = ExtResource("7_1yhj4")
+stretch_mode = 0
+
+[node name="MensajeError" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252
+anchor_top = 0.39
+anchor_right = 0.748
+anchor_bottom = 0.64
+offset_left = -0.304016
+offset_top = -0.719986
+offset_right = 0.303955
+offset_bottom = 0.279968
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_te2vj")
+
+[node name="TextoError" type="Label" parent="MensajeError"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.126
+anchor_right = 0.969
+anchor_bottom = 0.811
+offset_left = 0.268
+offset_top = -0.0180035
+offset_right = -0.267883
+offset_bottom = 0.026947
+theme_override_fonts/font = ExtResource("5_g7tqf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BackButton" type="TextureButton" parent="MensajeError"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26
+anchor_top = 0.897
+anchor_right = 0.74
+anchor_bottom = 1.247
+offset_left = 0.239975
+offset_top = 0.00900269
+offset_right = -0.23999
+offset_bottom = -0.0210114
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../LoginButton")
+focus_previous = NodePath("../../LoginButton")
+texture_normal = ExtResource("13_st0uv")
+texture_pressed = ExtResource("14_qdqhl")
+texture_hover = ExtResource("15_ol8wi")
+texture_focused = ExtResource("7_1yhj4")
+stretch_mode = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(575, 353)
+stream = ExtResource("17_l4v3f")
+autoplay = true
+parameters/looping = false
+
+[connection signal="pressed" from="LoginButton" to="." method="OnLoginButtonPressed"]
+[connection signal="pressed" from="RegisterButton" to="." method="OnRegisterButtonPressed"]
+[connection signal="pressed" from="MensajeError/BackButton" to="." method="OnBackButtonPressed"]
