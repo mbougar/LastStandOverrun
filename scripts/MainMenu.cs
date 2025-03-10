@@ -21,7 +21,6 @@ public partial class MainMenu : Control
 
 		leaderboardList.Clear();
 
-		// Add leaderboard entries
 		foreach (var entry in leaderboardData)
 		{
 			leaderboardList.AddItem($"{entry.Username} - {entry.HighestScore}");

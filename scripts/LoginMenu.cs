@@ -6,7 +6,7 @@ public partial class LoginMenu : Control
 {
 	private Global global;
 	private TextureRect error;
-	private Label textoError; // Cambié TextEdit a Label, ya que es para mostrar texto, no editar
+	private Label textoError;
 
 	public override void _Ready()
 	{
